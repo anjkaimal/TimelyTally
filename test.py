@@ -54,21 +54,6 @@ while True:
     #show video feed with the annotated frame
     cv2.imshow("Frame",imgBackground)
     k=cv2.waitKey(1)
-
-    if k==ord('a'):
-        speak("Attendance Taken..")
-        time.sleep(1)
-        if exist:
-            with open("Attendance/Attendance_" + date + ".csv", "+a") as csvfile:
-                writer=csv.writer(csvfile)
-                writer.writerow(attendance)
-            csvfile.close()
-        else:
-            with open("Attendance/Attendance_" + date + ".csv", "+a") as csvfile:
-                writer=csv.writer(csvfile)
-                writer.writerow(COL_NAMES)
-                writer.writerow(attendance)
-            csvfile.close()
     #exit loop when q is pressed
     if k==ord('q'):
         break
