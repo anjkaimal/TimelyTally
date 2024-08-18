@@ -54,8 +54,23 @@ while True:
     #show video feed with the annotated frame
     cv2.imshow("Frame",imgBackground)
     k=cv2.waitKey(1)
-    #exit loop when q is pressed
+
+    if k==ord('a'):
+            speak("Attendance Taken.. Next Person Please")
+            time.sleep(5)
+            if exist:
+                with open("Attendance/Attendance_" + date + ".csv", "+a") as csvfile:
+                    writer=csv.writer(csvfile)
+                    writer.writerow(attendance)
+                csvfile.close()
+            else:
+                with open("Attendance/Attendance_" + date + ".csv", "+a") as csvfile:
+                    writer=csv.writer(csvfile)
+                    writer.writerow(COL_NAMES)
+                    writer.writerow(attendance)
+                csvfile.close()
     if k==ord('q'):
         break
+
 video.release()
 cv2.destroyAllWindows()
